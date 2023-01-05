@@ -1,0 +1,8 @@
+*{
+    background-color: red;
+}
+.lPage{
+    background-image: url('/images/images2.jfif');
+    width: 80%;
+    min-height: 80%;
+}
