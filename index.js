@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const ejs = require("ejs")
+// const ejs = require("ejs")
 app.set("view engine","ejs")
 const path = require("path")
 
@@ -30,7 +30,7 @@ app.get('/login',(req,res)=>{
     res.render('login',{allUser})
 })
 app.post('/login',(req,res)=>{
-    for ( i = 0; i < allUser.length; index++) {
+    for ( i = 0; i < allUser.length; i++) {
         let newLogin = req.body
         if (newLogin.email === allUser[i].email && newLogin.password === allUser[i].password) {
             // console.log()
@@ -44,11 +44,13 @@ app.post('/login',(req,res)=>{
 
 // for the blogspot posts
 app.get('/home',(req,res)=>{ 
-    
-    res.render('home')
+    res.render('home',{allPost})
 })
-app.post('/home',()=>{
-    
+app.post('/home',(req,res)=>{
+    // let dirname = __dirname
+    allPost.push(req.body)
+    console.log(allPost)
+    res.redirect('home')
 })
  
 // app.get('/',(req,res)=>{

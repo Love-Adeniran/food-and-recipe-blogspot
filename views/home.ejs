@@ -5,11 +5,13 @@
         <div class="container mx-auto shadow p-5">
             <div class="container p-5 mx-auto shadow">
                 <span class="container-fluid shadow mx-auto text-warning m-5 btn-outline-danger rounded-pill ">Add New Post</span>
-                <input type="text" placeholder="Title" class="form-control my-2" name="title">
-                <textarea placeholder="Body" class="form-control my-2" name="body"></textarea>
-                <textarea placeholder="Reciepe" class="form-control my-2" name="reciepe"></textarea>
-                <input type="file" accept="image/*" placeholder="Food image" class="form-control my-2 w-50" name="image">
-                <input type="button" value="Add" class="btn text-danger btn-outline-warning">
+                <form action="/home" method="post">
+                    <input type="text" placeholder="Title" class="form-control my-2" name="title">
+                    <textarea placeholder="Body" class="form-control my-2" name="body"></textarea>
+                    <textarea placeholder="Reciepe" class="form-control my-2" name="reciepe"></textarea>
+                    <input type="file" accept="image/*" placeholder="Food image" class="form-control my-2 w-50" name="image">
+                    <button class="btn text-danger btn-outline-warning">Add</button>
+                </form>
             </div>
         </div>
     </div>
@@ -18,26 +20,15 @@
     </div>
     
     <div class="container mx-auto border-4 border-start border-end border-danger row">
-        <!-- <div class="container mx-auto row">
-            <div class="  img-thumbnails border-2 border-danger col  p-1 ">
-                <img src="/images/images1.jfif" alt="" class="img-thumbnails rounded " >
-            </div>
-            <div class="col">
-                <h1 class="text-warning">Jollof Rice</h1>
-                <p class="text-warning">The popular jollof rice is a classic recipe that makes it to almost all special occasions in Nigeria. It is a rich, tasty, and elegant meal consisting of rice cooked with pepper, broth, seasoning, and spices in one pot. Serve this amazing meal with any protein of your choice</p>
-            </div>
-
-            
-        </div> -->
 
         <div class="card col-3 my-2" style="width: 18rem;">
             <div class="col  ">
                 <img src="/images/images1.jfif" alt="" class=" card-img-top rounded " >
             </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title text-success">Jollof Rice</h5>
+              <p class="card-text text-success">The popular jollof rice is a classic recipe that makes it to almost all special occasions in Nigeria. It is a rich, tasty, and elegant meal consisting of rice cooked with pepper, broth, seasoning, and spices in one pot. Serve this amazing meal with any protein of your choice</p>
+              <a href="#" class="btn text-danger btn-outline-warning">Go somewhere</a>
             </div>
           </div>
 
@@ -46,10 +37,23 @@
                 <img src="/images/images1.jfif" alt="" class=" card-img-top rounded " >
             </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title text-success">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="#" class="btn text-danger btn-outline-warning">Go somewhere</a>
             </div>
           </div>
+
+          <% allPost.map((each)=>{ %> 
+            <div class="card col-3 my-2" style="width: 18rem;">
+                <div class="col  ">
+                    <img src='/images/<%= each.image  %>'   alt="" class=" card-img-top rounded " >
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title text-success"><%= each.title %> </h5>
+                  <p class="card-text"><%= each.body %> </p>
+                  <a href="#" class="btn text-danger btn-outline-warning">see more </a>
+                </div>
+              </div>
+            <% }) %> 
     </div>
 </div>
