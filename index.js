@@ -4,7 +4,6 @@ const app = express()
 app.set("view engine","ejs")
 const path = require("path")
 
-// app.use('/images', express.static(__dirname + 'views/images'))
 app.use(express.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname,"public")))
 
@@ -29,11 +28,11 @@ app.post('/signUp',(req,res)=>{
 app.get('/login',(req,res)=>{
     res.render('login',{allUser})
 })
+
 app.post('/login',(req,res)=>{
     for ( i = 0; i < allUser.length; i++) {
         let newLogin = req.body
         if (newLogin.email === allUser[i].email && newLogin.password === allUser[i].password) {
-            // console.log()
            res.redirect("/home") 
         }
         else{
@@ -43,20 +42,24 @@ app.post('/login',(req,res)=>{
 })
 
 // for the blogspot posts
+app.get('/home/:id',(req,res)=>{
+    console.log('o wole')
+    let id = req.params.id
+    let post = allPost[id]
+    console.log(allPost[id])
+    res.render('more', {post})
+})
+
 app.get('/home',(req,res)=>{ 
     res.render('home',{allPost})
 })
 app.post('/home',(req,res)=>{
-    // let dirname = __dirname
     allPost.push(req.body)
     console.log(allPost)
     res.redirect('home')
 })
- 
-// app.get('/',(req,res)=>{
-//     res.send('Hello Love')
-// })
+
 
 app.listen(5000, ()=>{
-    console.log('e don happen');
+    // console.log('e don happen');
 })

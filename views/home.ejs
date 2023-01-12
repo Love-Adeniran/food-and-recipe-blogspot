@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          <% allPost.map((each)=>{ %> 
+          <% allPost.map((each,i)=>{ %> 
             <div class="card col-3 my-2" style="width: 18rem;">
                 <div class="col  ">
                     <img src='/images/<%= each.image  %>'   alt="" class=" card-img-top rounded " >
@@ -51,7 +51,7 @@
                 <div class="card-body">
                   <h5 class="card-title text-success"><%= each.title %> </h5>
                   <p class="card-text"><%= each.body %> </p>
-                  <a href="#" class="btn text-danger btn-outline-warning">see more </a>
+                  <a href="/home/<%= i %> " class="btn text-danger btn-outline-warning">see more </a>
                 </div>
               </div>
             <% }) %> 
